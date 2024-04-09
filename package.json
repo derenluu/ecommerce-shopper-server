@@ -1,0 +1,36 @@
+{
+  "name": "shopper_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "lint": "eslint src --ext js --report-unused-disable-directives --max-warnings 0",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel ./src -d ./build/src",
+    "build": "npm run clean && npm run build-babel",
+    "production": "cross-env BUILD_MODE=production npm run build && node ./build/src/server.js",
+    "dev": "cross-env BUILD_MODE=dev nodemon --exec babel-node ./src/server.js"
+  },
+  "author": "Deren",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.24.1",
+    "async-exit-hook": "^2.0.1",
+    "bcrypt": "^5.1.1",
+    "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "http-status-codes": "^2.3.0",
+    "mongodb": "^6.5.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.24.1",
+    "@babel/core": "^7.24.3",
+    "@babel/node": "^7.23.9",
+    "@babel/plugin-transform-runtime": "^7.24.3",
+    "@babel/preset-env": "^7.24.3",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "nodemon": "^3.1.0"
+  }
+}
