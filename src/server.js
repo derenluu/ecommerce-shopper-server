@@ -4,9 +4,9 @@ import exitHook from 'async-exit-hook';
 import cors from 'cors';
 import express from 'express';
 import { env } from '~/configs/environment';
-// import { APIs } from '~/routes';
 import { corsOptions } from '~/configs/cors';
 import { CLOSE_DB, CONNECT_DB } from '~/configs/mongodb';
+import { RouterAPIs } from '~/routes';
 // import { createJWT } from './middlewares/jwtAction';
 
 const START_SERVER = () => {
@@ -24,7 +24,7 @@ const START_SERVER = () => {
   // Middlewares
   // app.use(errorHandlingMiddleware);
 
-  //   app.use('/api', APIs);
+  app.use('/api', RouterAPIs);
 
   if (process.env.BUILD_MODE === 'production') {
     app.listen(env.APP_PORT, () => {
